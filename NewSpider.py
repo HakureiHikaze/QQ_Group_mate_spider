@@ -2,7 +2,7 @@ import os
 import re
 import time
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchFrameException, NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchFrameException, NoSuchElementException
 
 
 class newSpider:
