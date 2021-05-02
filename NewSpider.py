@@ -21,10 +21,10 @@ class newSpider:
         i = True
         while i:
             try:
-                self.driver.switch_to.frame("login_frame")
-                login = self.driver.find_element_by_class_name("face")  # get face to login
-                login.click()
-                time.sleep(3)
+                # self.driver.switch_to.frame("login_frame")
+                # login = self.driver.find_element_by_class_name("face")  # get face to login
+                # login.click()
+                time.sleep(10)
                 li_list = self.find_ul_element()
                 li_list[0].click()
                 i = False
