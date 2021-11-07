@@ -100,6 +100,8 @@ class newSpider:
         """
         print("parseAndWrite() written")
         memberList = self.parseTbody(tbody)
+        if os.path.exists(self.currentFileName):
+            os.remove(self.currentFileName)
         with open(self.currentFileName, 'a+', encoding="utf-8") as f:
             for each in memberList:
                 f.write(str(each) + "\n")
@@ -123,7 +125,7 @@ class newSpider:
             prelen = len(tList)  # update length of tList
 
     def exe(self):
-        i = True
+        i = False
         while i:
             try:
                 self.parse()
@@ -133,19 +135,23 @@ class newSpider:
                 os.remove(self.currentFileName)
 
         li_list = self.find_ul_element()
-        for j in range(1, len(li_list)):
-            i = True
-            while i:
-                try:
-                    self.switch.click()
-                    li_list = self.find_ul_element()
-                    li_list[j].click()
-                    time.sleep(1)
-                    self.parse()
-                    i = False
-                except Exception:
-                    self.driver.navigate().refresh()
-                    os.remove(self.currentFileName)
+        # for j in range(1, len(li_list)):
+        #     i = True
+        #     while i:
+        #         try:
+        #             self.switch.click()
+        #             li_list = self.find_ul_element()
+        #             li_list[j].click()
+        #             time.sleep(1)
+        #             self.parse()
+        #             i = False
+        #         except Exception:
+        #             self.driver.navigate().refresh()
+        #             os.remove(self.currentFileName)
+        i = True
+        while i:
+            i = False if input() == "exit" else True
+            self.parse()
         self.driver.quit()
 
 
